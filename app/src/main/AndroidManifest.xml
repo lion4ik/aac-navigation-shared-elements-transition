@@ -39,7 +39,7 @@
             </intent-filter>
 
             <!--TODO STEP 12-->
-            <!--<nav-graph android:value="@navigation/mobile_navigation"/>-->
+            <nav-graph android:value="@navigation/mobile_navigation"/>
             <!--TODO ENDSTEP 12-->
 
         </activity>

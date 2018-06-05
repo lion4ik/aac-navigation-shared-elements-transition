@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val host: NavHostFragment = supportFragmentManager
-                .findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment? ?: return
+                .findFragmentById(R.id.my_nav_host_fragment) as NavHostSharedElementsTransitionFragment? ?: return
 
 
         // Set up Action Bar

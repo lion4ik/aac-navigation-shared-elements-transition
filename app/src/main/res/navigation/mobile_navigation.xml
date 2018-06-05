@@ -22,13 +22,13 @@
         tools:layout="@layout/main_fragment">
 
         <!-- TODO STEP 8 - Add action with transitions -->
-        <!--<action-->
-            <!--android:id="@+id/next_action"-->
-            <!--app:destination="@+id/flow_step_one"-->
-            <!--app:enterAnim="@anim/slide_in_right"-->
-            <!--app:exitAnim="@anim/slide_out_left"-->
-            <!--app:popEnterAnim="@anim/slide_in_left"-->
-            <!--app:popExitAnim="@anim/slide_out_right" />-->
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/flow_step_one"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
 
         <!-- TODO ENDSTEP -->
 
@@ -84,8 +84,13 @@
             android:defaultValue="Android!"/>
         <!-- TODO STEP 12 - Add a deep link to www.iana.org/domains/{myarg}/ -->
 
-        <!--<deepLink app:uri="www.example.com/{myarg}" />-->
+        <deepLink app:uri="www.example.com/{myarg}" />
 
         <!-- TODO END STEP 12 -->
     </fragment>
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:name="com.example.android.codelabs.navigation.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings"/>
 </navigation>
