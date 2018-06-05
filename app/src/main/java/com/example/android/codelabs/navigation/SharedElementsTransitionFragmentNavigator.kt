@@ -22,13 +22,10 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
         mBackStackCount = mFragmentManager.backStackEntryCount
         mOnBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
             val newCount = mFragmentManager.backStackEntryCount
-            val backStackEffect: Int
-            if (newCount < mBackStackCount) {
-                backStackEffect = Navigator.BACK_STACK_DESTINATION_POPPED
-            } else if (newCount > mBackStackCount) {
-                backStackEffect = Navigator.BACK_STACK_DESTINATION_ADDED
-            } else {
-                backStackEffect = Navigator.BACK_STACK_UNCHANGED
+            val backStackEffect: Int = when {
+                newCount < mBackStackCount -> Navigator.BACK_STACK_DESTINATION_POPPED
+                newCount > mBackStackCount -> Navigator.BACK_STACK_DESTINATION_ADDED
+                else -> Navigator.BACK_STACK_UNCHANGED
             }
             mBackStackCount = newCount
 
@@ -51,11 +48,11 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
     }
 
     private fun getBackStackName(@IdRes destinationId: Int): String =
-        try {
-            mContext.resources.getResourceName(destinationId)
-        } catch (e: Resources.NotFoundException) {
-            Integer.toString(destinationId)
-        }
+            try {
+                mContext.resources.getResourceName(destinationId)
+            } catch (e: Resources.NotFoundException) {
+                Integer.toString(destinationId)
+            }
 
     override fun navigate(destination: FragmentNavigator.Destination, args: Bundle?,
                           navOptions: NavOptions?) {
@@ -72,6 +69,15 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
             popEnterAnim = if (popEnterAnim != -1) popEnterAnim else 0
             popExitAnim = if (popExitAnim != -1) popExitAnim else 0
             ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim)
+        }
+
+        val currentFrag = mFragmentManager.findFragmentById(mContainerId)
+        if (currentFrag is HasSharedElements) {
+            val sharedElements = currentFrag.getSharedElements()
+            ft.setReorderingAllowed(true)
+            for ((key, value) in sharedElements){
+                ft.addSharedElement(value, key)
+            }
         }
 
         ft.replace(mContainerId, frag)

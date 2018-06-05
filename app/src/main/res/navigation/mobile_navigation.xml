@@ -92,5 +92,16 @@
         android:id="@+id/settings_fragment"
         android:name="com.example.android.codelabs.navigation.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings"/>
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/settings_image_fragment">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/settings_image_fragment"
+        android:name="com.example.android.codelabs.navigation.SettingsImageFragment"
+        android:label="fragment_settings_image"
+        tools:layout="@layout/fragment_settings_image"/>
 </navigation>

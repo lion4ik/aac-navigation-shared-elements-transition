@@ -14,4 +14,11 @@
     android:textAlignment="center"
     android:textSize="52sp" />
 
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:transitionName="imgView"
+        android:src="@drawable/ic_android"/>
+
 </FrameLayout>
