@@ -1,4 +1,4 @@
-package com.example.android.codelabs.navigation
+package com.github.lion4ik.arch.sharedelements
 
 import android.content.Context
 import android.content.res.Resources

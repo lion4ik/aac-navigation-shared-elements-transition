@@ -31,6 +31,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.github.lion4ik.arch.sharedelements.NavHostSharedElementsTransitionFragment
 
 /**
  * A simple activity demonstrating use of a NavHostFragment with a navigation drawer.

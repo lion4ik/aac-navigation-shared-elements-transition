@@ -66,4 +66,5 @@ dependencies {
 
     implementation 'android.arch.navigation:navigation-fragment:' + rootProject.navigationVersion
     implementation 'android.arch.navigation:navigation-ui:' + rootProject.navigationVersion
+    compile project(path: ':shared_elements_extension')
 }

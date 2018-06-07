@@ -1,4 +1,4 @@
-package com.example.android.codelabs.navigation
+package com.github.lion4ik.arch.sharedelements
 
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator

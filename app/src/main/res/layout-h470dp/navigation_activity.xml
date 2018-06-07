@@ -31,7 +31,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/my_nav_host_fragment"
-        android:name="com.example.android.codelabs.navigation.NavHostSharedElementsTransitionFragment"
+        android:name="com.github.lion4ik.arch.sharedelements.NavHostSharedElementsTransitionFragment"
         app:navGraph="@navigation/mobile_navigation"
         app:defaultNavHost="true"
         />

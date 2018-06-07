@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
+
+    //Navigation components
+    implementation 'android.arch.navigation:navigation-fragment:' + rootProject.navigationVersion
+    implementation 'android.arch.navigation:navigation-ui:' + rootProject.navigationVersion
+}
+repositories {
+    mavenCentral()
+}
