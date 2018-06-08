@@ -65,6 +65,10 @@ class MainFragment : Fragment() {
                 Navigation.createNavigateOnClickListener(R.id.next_action, null)
         )
 
+        view.findViewById<Button>(R.id.navigate_action_recyclerview)?.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.next_action_recyclerview, null)
+        )
+
         //TODO ENDSTEP 7
     }
 

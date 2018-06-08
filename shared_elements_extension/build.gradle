@@ -1,5 +1,7 @@
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+
 
 android {
     compileSdkVersion 27
@@ -30,4 +32,14 @@ dependencies {
 }
 repositories {
     mavenCentral()
+}
+
+publish {
+    userOrg = 'lion4ik'
+    groupId = 'com.github.lion4ik'
+    artifactId = 'arch-navigation-shared-elements'
+    publishVersion = '0.1'
+    desc = 'This library is an implementation of shared elements transition for android navigation architecture component.'
+    licences = ['MIT']
+    website = 'https://github.com/lion4ik/aac-navigation-shared-elements-transition'
 }

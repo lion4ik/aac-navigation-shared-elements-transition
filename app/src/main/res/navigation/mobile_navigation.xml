@@ -30,6 +30,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/next_action_recyclerview"
+            app:destination="@+id/recyclerview_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
         <!-- TODO ENDSTEP -->
 
     </fragment>
@@ -104,4 +112,28 @@
         android:name="com.example.android.codelabs.navigation.SettingsImageFragment"
         android:label="fragment_settings_image"
         tools:layout="@layout/fragment_settings_image"/>
+    <fragment
+        android:id="@+id/recyclerview_fragment"
+        android:name="com.example.android.codelabs.navigation.recycler_view.recycler_view_to_fragment.RecyclerViewFragment"
+        android:label="recyclerview_fragment"
+        tools:layout="@layout/activity_recycler_view">
+
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/animal_details_fragment">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/animal_details_fragment"
+        android:name="com.example.android.codelabs.navigation.recycler_view.recycler_view_to_fragment.AnimalDetailFragment"
+        android:label="animal_details_fragment"
+        tools:layout="@layout/fragment_animal_detail">
+        <argument
+            android:name="animal_item"
+            app:type="reference" />
+        <argument
+            android:name="transition_name"
+            app:type="string"
+            android:defaultValue='\0'/>
+    </fragment>
 </navigation>

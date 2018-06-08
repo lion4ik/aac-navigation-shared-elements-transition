@@ -74,7 +74,7 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
         val currentFrag = mFragmentManager.findFragmentById(mContainerId)
         if (currentFrag is HasSharedElements) {
             val sharedElements = currentFrag.getSharedElements()
-            ft.setReorderingAllowed(true)
+            ft.setReorderingAllowed(currentFrag.hasReorderingAllowed())
             for ((key, value) in sharedElements){
                 ft.addSharedElement(value, key)
             }

@@ -7,5 +7,7 @@ import android.view.View
  */
 interface HasSharedElements {
 
-    fun getSharedElements() : Map<String, View>
+    fun getSharedElements(): Map<String, View>
+
+    fun hasReorderingAllowed(): Boolean
 }

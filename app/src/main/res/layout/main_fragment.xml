@@ -61,4 +61,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/navigate_dest_bt" />
+
+    <Button
+        android:id="@+id/navigate_action_recyclerview"
+        android:layout_width="384dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Navigate to recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navigate_action_bt"
+        />
 </android.support.constraint.ConstraintLayout>

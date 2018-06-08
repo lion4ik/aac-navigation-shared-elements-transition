@@ -34,7 +34,6 @@ class SettingsFragment : Fragment(), HasSharedElements {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
 
@@ -49,4 +48,6 @@ class SettingsFragment : Fragment(), HasSharedElements {
         val view = view?.findViewById<View>(R.id.imgView) ?: throw IllegalArgumentException("view is null")
         return mapOf(view.transitionName to view)
     }
+
+    override fun hasReorderingAllowed(): Boolean = true
 }
