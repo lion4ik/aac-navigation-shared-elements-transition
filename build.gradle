@@ -25,10 +25,11 @@ buildscript {
     repositories {
         jcenter()
         google()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0-alpha17'
-        classpath 'android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha01'
+        classpath 'android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha02'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath 'com.novoda:bintray-release:0.8.0'
     }
@@ -38,6 +39,7 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 

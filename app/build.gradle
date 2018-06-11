@@ -39,11 +39,6 @@ android {
             testCoverageEnabled false
         }
     }
-    dataBinding {
-        enabled = true
-    }
-    productFlavors {
-    }
 
     lintOptions {
         abortOnError false
@@ -66,7 +61,7 @@ dependencies {
 
     implementation 'android.arch.navigation:navigation-fragment:' + rootProject.navigationVersion
     implementation 'android.arch.navigation:navigation-ui:' + rootProject.navigationVersion
-    compile project(path: ':shared_elements_extension')
+    implementation project(path: ':shared_elements_extension')
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "com.android.support:percent:" + rootProject.supportLibVersion

@@ -1,6 +1,7 @@
 apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
 
 
 android {
@@ -33,7 +34,6 @@ dependencies {
 repositories {
     mavenCentral()
 }
-
 publish {
     userOrg = 'lion4ik'
     groupId = 'com.github.lion4ik'
@@ -42,4 +42,31 @@ publish {
     desc = 'This library is an implementation of shared elements transition for android navigation architecture component.'
     licences = ['MIT']
     website = 'https://github.com/lion4ik/aac-navigation-shared-elements-transition'
+
+    publishing {
+        publications {
+            Production(MavenPublication) {
+                artifact("$buildDir/outputs/aar/shared_elements_extension-release.aar")
+                groupId 'com.github.lion4ik'
+                artifactId 'arch-navigation-shared-elements'
+                version '0.1'
+
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+
+                    // Iterate over the implementation dependencies (we don't want the test ones), adding a <dependency> node for each
+                    configurations.implementation.allDependencies.each {
+                        // Ensure dependencies such as fileTree are not included in the pom.
+                        if (it.name != 'unspecified') {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    publications = ['Production']
 }
