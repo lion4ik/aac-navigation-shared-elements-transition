@@ -96,4 +96,4 @@ class SharedElementFragment : Fragment(), HasSharedElements {
 }
 ```
 
-`FragmentManager` expected to get views as shared elements which will be add to `FragmentTransactioin` by 
+`FragmentManager` gets views as shared elements through `getSharedElements()` method implemented by `Fragment`. Shared elements will be add to `FragmentTransaction` by `addSharedElement` method. Also, in some cases you need to set reordering flag for `FragmentTransaction`. 
