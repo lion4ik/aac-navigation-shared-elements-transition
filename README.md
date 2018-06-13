@@ -11,13 +11,13 @@ aac-navigation-shared-elements-transition allows you to use shared elements tran
 
 #### Add in project
 
-Add jitpack to repositories closure. For example, you should add it to root
+Add specific maven repository to repositories closure. For example, you should add it to root
 of `build.gradle`:
 
 ```groovy
 allprojects {
   repositories {
-    maven { url "https://jitpack.io" }
+    maven { url "https://dl.bintray.com/lion4ik/maven" }
   }
 }
 ```
@@ -26,7 +26,7 @@ Add dependency:
 
 ```groovy
 dependencies {
-   compile "com.github.lion4ik:arch-navigation-shared-elements:$version"
+   implementation "com.github.lion4ik:arch-navigation-shared-elements:$version"
 }
 ```
 
