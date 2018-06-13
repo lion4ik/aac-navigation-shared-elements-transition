@@ -18,7 +18,6 @@ package com.example.android.codelabs.navigation
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
@@ -39,7 +38,7 @@ import androidx.navigation.Navigation
 class DeepLinkFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.deeplink_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_deeplink, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

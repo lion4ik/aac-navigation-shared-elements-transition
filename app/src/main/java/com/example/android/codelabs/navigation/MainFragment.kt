@@ -19,12 +19,9 @@ package com.example.android.codelabs.navigation
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 
 /**
@@ -34,15 +31,11 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.navigate_action_bt)?.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.next_action, null)
-        )
-
         view.findViewById<Button>(R.id.navigate_action_shared_element)?.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.next_action_shared_element, null)
         )
@@ -50,9 +43,5 @@ class MainFragment : Fragment() {
         view.findViewById<Button>(R.id.navigate_action_recyclerview)?.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.next_action_recyclerview, null)
         )
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.main_menu, menu)
     }
 }

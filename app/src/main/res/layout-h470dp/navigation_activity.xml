@@ -39,5 +39,5 @@
         android:id="@+id/bottom_nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_bottom_nav"/>
+        app:menu="@menu/menu_nav"/>
 </LinearLayout>

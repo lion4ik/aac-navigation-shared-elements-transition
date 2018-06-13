@@ -19,16 +19,7 @@
         android:id="@+id/launcher_home"
         android:name="com.example.android.codelabs.navigation.MainFragment"
         android:label="@string/home"
-        tools:layout="@layout/main_fragment">
-
-        <!-- TODO STEP 8 - Add action with transitions -->
-        <action
-            android:id="@+id/next_action"
-            app:destination="@+id/flow_step_one"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+        tools:layout="@layout/fragment_main">
 
         <action
             android:id="@+id/next_action_recyclerview"
@@ -46,55 +37,18 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
-        <!-- TODO ENDSTEP -->
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/flow_step_one"
-        android:name="com.example.android.codelabs.navigation.FlowStepFragment"
-        tools:layout="@layout/flow_step_one_fragment">
-        <argument
-            android:name="step"
-            app:type="integer"
-            android:defaultValue="1"/>
-
-        <action
-            android:id="@+id/next_action"
-            app:destination="@+id/flow_step_two">
-        </action>
-    </fragment>
-
-    <fragment
-        android:id="@+id/flow_step_two"
-        android:name="com.example.android.codelabs.navigation.FlowStepFragment"
-        tools:layout="@layout/flow_step_two_fragment">
-
-        <argument
-            android:name="step"
-            type="integer"
-            android:defaultValue="2"/>
-
-        <action
-            android:id="@+id/next_action"
-            app:popUpTo="@id/launcher_home">
-        </action>
     </fragment>
 
     <fragment
         android:id="@+id/android"
         android:name="com.example.android.codelabs.navigation.DeepLinkFragment"
         android:label="@string/deeplink"
-        tools:layout="@layout/deeplink_fragment">
+        tools:layout="@layout/fragment_deeplink">
 
         <argument
             android:name="myarg"
             android:defaultValue="Android!"/>
-        <!-- TODO STEP 12 - Add a deep link to www.iana.org/domains/{myarg}/ -->
-
         <deepLink app:uri="www.example.com/{myarg}" />
-
-        <!-- TODO END STEP 12 -->
     </fragment>
     <fragment
         android:id="@+id/fragment_shared_element"
@@ -127,7 +81,7 @@
         android:id="@+id/animal_details_fragment"
         android:name="com.example.android.codelabs.navigation.recycler_view.RecyclerViewSharedElementsDetailFragment"
         android:label="animal_details_fragment"
-        tools:layout="@layout/fragment_animal_detail">
+        tools:layout="@layout/fragment_recycler_view_shared_elements_detail">
         <argument
             android:name="animal_item"
             app:type="reference" />
