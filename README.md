@@ -30,7 +30,7 @@ dependencies {
 }
 ```
 
-where recommended $version is the latest from Download badge.
+where recommended `$version` is the latest from Download badge  [ ![Download](https://api.bintray.com/packages/lion4ik/maven/arch-navigation-shared-elements/images/download.svg?version=0.1) ](https://bintray.com/lion4ik/maven/arch-navigation-shared-elements/0.1/link).
 
 #### How to use
 
