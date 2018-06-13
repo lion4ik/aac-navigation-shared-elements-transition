@@ -27,14 +27,11 @@ import androidx.navigation.Navigation
 import com.github.lion4ik.arch.sharedelements.HasSharedElements
 
 
-/**
- * A simple [Fragment] subclass.
- */
-class SettingsFragment : Fragment(), HasSharedElements {
+class SharedElementFragment : Fragment(), HasSharedElements {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+        return inflater.inflate(R.layout.fragment_shared_element, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

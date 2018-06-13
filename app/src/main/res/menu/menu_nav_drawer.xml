@@ -12,7 +12,7 @@
     </group>
     <!-- TODO STEP 8 - Add a menu item for settings_fragment -->
     <item
-        android:id="@+id/settings_fragment"
+        android:id="@+id/fragment_shared_element"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings" />
 

@@ -38,6 +38,14 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
 
+        <action
+            android:id="@+id/next_action_shared_element"
+            app:destination="@+id/fragment_shared_element"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
         <!-- TODO ENDSTEP -->
 
     </fragment>
@@ -73,14 +81,6 @@
         </action>
     </fragment>
 
-    <!-- TODO STEP 4 Create a new navigation destination pointing to SettingsFragment -->
-    <!--<fragment-->
-        <!--android:id="@+id/settings_fragment"-->
-        <!--android:name="com.example.android.codelabs.navigation.SettingsFragment"-->
-        <!--android:label="fragment_settings"-->
-        <!--tools:layout="@layout/fragment_settings"/>-->
-    <!-- TODO END STEP 4 -->
-
     <fragment
         android:id="@+id/android"
         android:name="com.example.android.codelabs.navigation.DeepLinkFragment"
@@ -97,26 +97,26 @@
         <!-- TODO END STEP 12 -->
     </fragment>
     <fragment
-        android:id="@+id/settings_fragment"
-        android:name="com.example.android.codelabs.navigation.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings">
+        android:id="@+id/fragment_shared_element"
+        android:name="com.example.android.codelabs.navigation.SharedElementFragment"
+        android:label="fragment_shared_element"
+        tools:layout="@layout/fragment_shared_element">
 
         <action
             android:id="@+id/next_action"
-            app:destination="@+id/settings_image_fragment">
+            app:destination="@+id/fragment_shared_element_details">
         </action>
     </fragment>
     <fragment
-        android:id="@+id/settings_image_fragment"
-        android:name="com.example.android.codelabs.navigation.SettingsImageFragment"
-        android:label="fragment_settings_image"
-        tools:layout="@layout/fragment_settings_image"/>
+        android:id="@+id/fragment_shared_element_details"
+        android:name="com.example.android.codelabs.navigation.SharedElementDetailsFragment"
+        android:label="fragment_shared_element_details"
+        tools:layout="@layout/fragment_shared_elements_details"/>
     <fragment
         android:id="@+id/recyclerview_fragment"
-        android:name="com.example.android.codelabs.navigation.recycler_view.recycler_view_to_fragment.RecyclerViewFragment"
+        android:name="com.example.android.codelabs.navigation.recycler_view.RecyclerViewSharedElementsFragment"
         android:label="recyclerview_fragment"
-        tools:layout="@layout/activity_recycler_view">
+        tools:layout="@layout/fragment_recycler_view_shared_elements">
 
         <action
             android:id="@+id/next_action"
@@ -125,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/animal_details_fragment"
-        android:name="com.example.android.codelabs.navigation.recycler_view.recycler_view_to_fragment.AnimalDetailFragment"
+        android:name="com.example.android.codelabs.navigation.recycler_view.RecyclerViewSharedElementsDetailFragment"
         android:label="animal_details_fragment"
         tools:layout="@layout/fragment_animal_detail">
         <argument

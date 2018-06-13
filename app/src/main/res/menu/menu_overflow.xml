@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- TODO Step 8 - Add an item for the settings fragment -->
     <item
-        android:id="@+id/settings_fragment"
+        android:id="@+id/fragment_shared_element"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings"
         android:menuCategory="secondary" />

@@ -2,17 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.example.android.codelabs.navigation.SettingsFragment">
-
-<TextView
-    android:id="@+id/text"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="112dp"
-    android:layout_marginTop="112dp"
-    android:text="@string/hello_settings_fragment"
-    android:textAlignment="center"
-    android:textSize="52sp" />
+             tools:context="com.example.android.codelabs.navigation.SharedElementFragment">
 
     <ImageView
         android:id="@+id/imgView"

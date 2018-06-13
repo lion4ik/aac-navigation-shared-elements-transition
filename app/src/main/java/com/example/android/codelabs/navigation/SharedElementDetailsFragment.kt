@@ -8,13 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SettingsImageFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
-class SettingsImageFragment : Fragment() {
+class SharedElementDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -22,6 +16,6 @@ class SettingsImageFragment : Fragment() {
         val transition = TransitionInflater.from(context)
                 .inflateTransition(R.transition.image_transition)
         sharedElementEnterTransition = transition
-        return inflater.inflate(R.layout.fragment_settings_image, container, false)
+        return inflater.inflate(R.layout.fragment_shared_elements_details, container, false)
     }
 }
