@@ -70,7 +70,7 @@ interface HasSharedElements {
 }
 ```
 
-You can do like this:
+You can do it like this:
 
 ```kotlin
 class SharedElementFragment : Fragment(), HasSharedElements {
