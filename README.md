@@ -4,8 +4,8 @@
 
 aac-navigation-shared-elements-transition allows you to use shared elements transitions between fragments.
 
-![](https://media.giphy.com/media/WgN6RjVHZFjN8cMslm/giphy.gif)
-![](https://media.giphy.com/media/tsUHmj7xr52HLRTeCo/giphy.gif)
+![](https://media.giphy.com/media/nbNVIg0jsQMjapzD2w/giphy.gif)
+![](https://media.giphy.com/media/3ixX8wy3nM1OJpVBvZ/giphy.gif)
 
 ## Usage
 
