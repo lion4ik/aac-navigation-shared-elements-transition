@@ -32,48 +32,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="flow_step_one">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="380" />
-                            <option name="y" value="20" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="next_action">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="flow_step_two">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="20" />
-                            <option name="y" value="260" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="next_action">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="fragment_shared_element">
                     <value>
                       <LayoutPositions>
@@ -118,12 +76,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="next_action">
+                            <entry key="next_action_recyclerview">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="next_action_recyclerview">
+                            <entry key="next_action_shared_element">
                               <value>
                                 <LayoutPositions />
                               </value>
