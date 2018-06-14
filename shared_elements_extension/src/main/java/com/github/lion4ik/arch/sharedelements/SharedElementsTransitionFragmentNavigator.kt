@@ -12,44 +12,41 @@ import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator
 
 @Navigator.Name("fragment")
-class SharedElementsTransitionFragmentNavigator constructor(private val mContext: Context, private val mFragmentManager: FragmentManager, private val mContainerId: Int) :
+class SharedElementsTransitionFragmentNavigator constructor(private val context: Context, private val fragmentManager: FragmentManager, private val containerId: Int) :
         Navigator<FragmentNavigator.Destination>() {
 
-    private var mBackStackCount: Int = 0
-    private val mOnBackStackChangedListener: FragmentManager.OnBackStackChangedListener
+    private var backStackCount: Int = 0
+    private val onBackStackChangedListener: FragmentManager.OnBackStackChangedListener
+
+    companion object {
+        const val NO_FRAGMENT_ANIMATION = 0
+        const val FRAGMENT_ANIMATION_NOT_SET = -1
+    }
 
     init {
-        mBackStackCount = mFragmentManager.backStackEntryCount
-        mOnBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
-            val newCount = mFragmentManager.backStackEntryCount
+        backStackCount = fragmentManager.backStackEntryCount
+        onBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
+            val newCount = fragmentManager.backStackEntryCount
             val backStackEffect: Int = when {
-                newCount < mBackStackCount -> Navigator.BACK_STACK_DESTINATION_POPPED
-                newCount > mBackStackCount -> Navigator.BACK_STACK_DESTINATION_ADDED
+                newCount < backStackCount -> Navigator.BACK_STACK_DESTINATION_POPPED
+                newCount > backStackCount -> Navigator.BACK_STACK_DESTINATION_ADDED
                 else -> Navigator.BACK_STACK_UNCHANGED
             }
-            mBackStackCount = newCount
+            backStackCount = newCount
 
-            var destId = 0
             val state = getState()
-            if (state != null) {
-                destId = state.mCurrentDestId
-            }
+            val destId = state?.currentDestId ?: 0
             dispatchOnNavigatorNavigated(destId, backStackEffect)
         }
-        mFragmentManager.addOnBackStackChangedListener(mOnBackStackChangedListener)
+        fragmentManager.addOnBackStackChangedListener(onBackStackChangedListener)
     }
 
-    override fun popBackStack(): Boolean {
-        return mFragmentManager.popBackStackImmediate()
-    }
-
-    override fun createDestination(): FragmentNavigator.Destination {
-        return FragmentNavigator.Destination(this)
-    }
+    override fun popBackStack(): Boolean = fragmentManager.popBackStackImmediate()
+    override fun createDestination(): FragmentNavigator.Destination = FragmentNavigator.Destination(this)
 
     private fun getBackStackName(@IdRes destinationId: Int): String =
             try {
-                mContext.resources.getResourceName(destinationId)
+                context.resources.getResourceName(destinationId)
             } catch (e: Resources.NotFoundException) {
                 Integer.toString(destinationId)
             }
@@ -57,47 +54,41 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
     override fun navigate(destination: FragmentNavigator.Destination, args: Bundle?,
                           navOptions: NavOptions?) {
         val frag = destination.createFragment(args)
-        val ft = mFragmentManager.beginTransaction()
+        val ft = fragmentManager.beginTransaction()
 
-        var enterAnim = navOptions?.enterAnim ?: -1
-        var exitAnim = navOptions?.exitAnim ?: -1
-        var popEnterAnim = navOptions?.popEnterAnim ?: -1
-        var popExitAnim = navOptions?.popExitAnim ?: -1
-        if (enterAnim != -1 || exitAnim != -1 || popEnterAnim != -1 || popExitAnim != -1) {
-            enterAnim = if (enterAnim != -1) enterAnim else 0
-            exitAnim = if (exitAnim != -1) exitAnim else 0
-            popEnterAnim = if (popEnterAnim != -1) popEnterAnim else 0
-            popExitAnim = if (popExitAnim != -1) popExitAnim else 0
+        navOptions?.let {
+            val enterAnim = if (it.enterAnim == FRAGMENT_ANIMATION_NOT_SET) NO_FRAGMENT_ANIMATION else it.enterAnim
+            val exitAnim = if (it.exitAnim == FRAGMENT_ANIMATION_NOT_SET) NO_FRAGMENT_ANIMATION else it.exitAnim
+            val popEnterAnim = if (it.popEnterAnim == FRAGMENT_ANIMATION_NOT_SET) NO_FRAGMENT_ANIMATION else it.popEnterAnim
+            val popExitAnim = if (it.popExitAnim == FRAGMENT_ANIMATION_NOT_SET) NO_FRAGMENT_ANIMATION else it.popExitAnim
             ft.setCustomAnimations(enterAnim, exitAnim, popEnterAnim, popExitAnim)
         }
 
-        val currentFrag = mFragmentManager.findFragmentById(mContainerId)
+        val currentFrag = fragmentManager.findFragmentById(containerId)
         if (currentFrag is HasSharedElements) {
             val sharedElements = currentFrag.getSharedElements()
             ft.setReorderingAllowed(currentFrag.hasReorderingAllowed())
-            for ((key, value) in sharedElements){
+            for ((key, value) in sharedElements) {
                 ft.addSharedElement(value, key)
             }
         }
 
-        ft.replace(mContainerId, frag)
+        ft.replace(containerId, frag)
 
         val oldState = getState()
-        if (oldState != null) {
-            ft.remove(oldState)
-        }
+        oldState?.let { ft.remove(it) }
 
         @IdRes val destId = destination.id
         val newState = StateFragment()
-        newState.mCurrentDestId = destId
+        newState.currentDestId = destId
         ft.add(newState, StateFragment.FRAGMENT_TAG)
 
-        val initialNavigation = mFragmentManager.fragments.isEmpty()
-        val isClearTask = navOptions != null && navOptions.shouldClearTask()
+        val initialNavigation = fragmentManager.fragments.isEmpty()
+        val isClearTask = navOptions?.shouldClearTask() ?: false
         // TODO Build first class singleTop behavior for fragments
         val isSingleTopReplacement = (navOptions != null && oldState != null
                 && navOptions.shouldLaunchSingleTop()
-                && oldState.mCurrentDestId == destId)
+                && oldState.currentDestId == destId)
         if (!initialNavigation && !isClearTask && !isSingleTopReplacement) {
             ft.addToBackStack(getBackStackName(destId))
         } else {
@@ -109,13 +100,10 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
             }
         }
         ft.commit()
-        mFragmentManager.executePendingTransactions()
+        fragmentManager.executePendingTransactions()
     }
 
-    private fun getState(): StateFragment? {
-        return mFragmentManager.findFragmentByTag(StateFragment.FRAGMENT_TAG) as StateFragment?
-    }
-
+    private fun getState(): StateFragment? = fragmentManager.findFragmentByTag(StateFragment.FRAGMENT_TAG) as StateFragment?
 
     /**
      * An internal fragment used by FragmentNavigator to track additional navigation state.
@@ -124,19 +112,16 @@ class SharedElementsTransitionFragmentNavigator constructor(private val mContext
      */
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     class StateFragment : Fragment() {
-
-        internal var mCurrentDestId: Int = 0
+        internal var currentDestId: Int = 0
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            if (savedInstanceState != null) {
-                mCurrentDestId = savedInstanceState.getInt(KEY_CURRENT_DEST_ID)
-            }
+            savedInstanceState?.let { currentDestId = savedInstanceState.getInt(KEY_CURRENT_DEST_ID) }
         }
 
         override fun onSaveInstanceState(outState: Bundle) {
             super.onSaveInstanceState(outState)
-            outState.putInt(KEY_CURRENT_DEST_ID, mCurrentDestId)
+            outState.putInt(KEY_CURRENT_DEST_ID, currentDestId)
         }
 
         companion object {
