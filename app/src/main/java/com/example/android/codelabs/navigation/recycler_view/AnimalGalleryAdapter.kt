@@ -30,7 +30,7 @@ class AnimalGalleryAdapter(private val animalItems: ArrayList<AnimalItem>, priva
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         val animalItem = animalItems[position]
 
-        Picasso.with(holder.itemView.context)
+        Picasso.get()
                 .load(animalItem.imageUrl)
                 .into(holder.animalImageView)
 
