@@ -84,10 +84,10 @@
         tools:layout="@layout/fragment_recycler_view_shared_elements_detail">
         <argument
             android:name="animal_item"
-            app:type="reference" />
+            app:argType="reference" />
         <argument
             android:name="transition_name"
-            app:type="string"
+            app:argType="string"
             android:defaultValue='\0'/>
     </fragment>
 </navigation>

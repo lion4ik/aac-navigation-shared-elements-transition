@@ -14,6 +14,7 @@ import android.widget.TextView
 import com.example.android.codelabs.navigation.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 class RecyclerViewSharedElementsDetailFragment : Fragment() {
 
@@ -44,7 +45,7 @@ class RecyclerViewSharedElementsDetailFragment : Fragment() {
             imageView.transitionName = transitionName
         }
 
-        Picasso.with(context)
+        Picasso.get()
                 .load(animalItem.imageUrl)
                 .noFade()
                 .into(imageView, object : Callback {
@@ -52,7 +53,7 @@ class RecyclerViewSharedElementsDetailFragment : Fragment() {
                         startPostponedEnterTransition()
                     }
 
-                    override fun onError() {
+                    override fun onError(e: Exception?) {
                         startPostponedEnterTransition()
                     }
                 })

@@ -17,18 +17,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.61'
 
     ext {
-        kotlinVersion = '1.2.41'
+        kotlinVersion = '1.2.61'
     }
     repositories {
         jcenter()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha18'
-        classpath 'android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha02'
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha08'
+        classpath 'android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha05'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath 'com.novoda:bintray-release:0.8.0'
     }
@@ -50,6 +50,6 @@ ext {
     runnerVersion = "0.5"
     rulesVersion = "0.5"
     espressoVersion = "2.2.2"
-    navigationVersion = "1.0.0-alpha01"
+    navigationVersion = "1.0.0-alpha05"
     constraintLayoutVersion = "1.1.0"
 }

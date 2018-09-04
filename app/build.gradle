@@ -19,11 +19,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId 'com.example.android.codelabs.navigation'
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -63,6 +63,6 @@ dependencies {
     implementation 'android.arch.navigation:navigation-ui:' + rootProject.navigationVersion
     implementation project(path: ':shared_elements_extension')
 
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "com.android.support:percent:" + rootProject.supportLibVersion
 }
